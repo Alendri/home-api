@@ -1,0 +1,57 @@
+#:schema ./cargo.schema.json
+[package]
+name = "home-api"
+version = "0.1.0"
+edition = "2021"
+repository = "https://github.com/Alendri/home-api"
+authors = ["Joakim 'Alendri' Johansson"]
+publish = false
+
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+#HTTP API
+#http server.
+axum = "0.6.10"
+hyper = "0.14"
+#De-/Serialize lib.
+serde = { version = "1.0", features = ["derive"] }
+#Async crate, makes axum async.
+tokio = { version = "1.26", features = ["full"] }
+#Services framework that axum uses. (middleware framework)
+tower = { version = "0.4", features = ["util"] }
+
+#VALIDATION
+#Validating JSON requests in Axum routes.
+validator = { version = "0.16.0", features = ["derive"] }
+
+
+#Logging
+tracing = "0.1.37"
+tracing-subscriber = { version = "0.3.16", features = ["json"] }
+
+#Database driver.
+sqlx = { version = "0.6.3", features = [
+  "sqlite",
+  "runtime-tokio-native-tls",
+  "macros",
+  "sqlx-macros",
+] }
+sqlx-macros = "0.6.2"
+
+#Error typing.
+anyhow = "1.0.70"
+
+#CLI/ENV tools
+#Merging .env files with actual environment variables.
+dotenvy = "0.15.6"
+#CLI arguments parsing and help text generator.
+clap = { version = "4.1.8", features = ["derive"] }
+#Cli client for sqlx for managing database migrations during development.
+sqlx-cli = "0.6.3"
+
+
+#hmm??
+# futures = "0.3"
+# quote = "1.0.23"

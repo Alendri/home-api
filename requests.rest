@@ -1,0 +1,47 @@
+GET http://127.0.0.1:3000
+###
+GET http://127.0.0.1:3000/demo/query_parsing?foo=32&bar=
+###
+GET http://127.0.0.1:3000/demo/query_parsing_with_none?bar=""
+###
+GET http://127.0.0.1:3000/demo/query_parsing_with_none_and_zero?bar=""
+###
+POST http://127.0.0.1:3000/demo/parse_body_and_path/my_dir/my_id
+content-type: application/json
+
+{
+  "foo": 1337
+}
+###
+POST http://127.0.0.1:3000/demo/parse_body_and_path/my_dir
+content-type: application/json
+
+{
+  "foo": 1337,
+  "bar": "bar value"
+}
+###
+PUT http://127.0.0.1:3000/demo/upsert_db_and_sum
+content-type: application/json
+
+{
+  "id": "bbcg",
+  "int": 10,
+  "float": 4.5
+}
+
+###
+GET http://127.0.0.1:3000/demo/list_numbers
+
+###
+GET http://127.0.0.1:3000/demo/list_sums
+
+###
+POST http://127.0.0.1:3000/users
+content-type: application/json
+
+{
+  "username": "me"
+}
+
+###
